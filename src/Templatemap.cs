@@ -73,9 +73,9 @@ namespace MadsKristensen.AddAnyFile
 			using (StreamReader reader = new StreamReader(templateFile))
 			{
 				string content = await reader.ReadToEndAsync();
-
+				var newName = name.Split('.')[0];
 				return content.Replace("{namespace}", ns)
-							  .Replace("{itemname}", name);
+							  .Replace("{itemname}", newName);
 			}
 		}
 
@@ -93,8 +93,16 @@ namespace MadsKristensen.AddAnyFile
 		{
 			if (Regex.IsMatch(safeName, "^I[A-Z].*"))
 			{
+				if (safeName.Contains("."))
+				{
+					return $"{extension}-interface-partial";
+				}
 				return extension += "-interface";
 			}
+            if (safeName.Contains(".") )
+            {
+				return $"{extension}-partial";
+            }
 
 			return extension;
 		}

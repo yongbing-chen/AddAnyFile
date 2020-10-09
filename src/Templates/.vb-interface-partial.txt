@@ -1,0 +1,3 @@
+﻿Public Partial Interface {itemname}
+    $
+End Interface

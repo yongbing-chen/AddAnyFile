@@ -1,0 +1,3 @@
+﻿Public Partial Class {itemname}
+    $
+End Class
